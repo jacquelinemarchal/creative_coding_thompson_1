@@ -122,11 +122,6 @@ function windowResized() {
           !activeOscillators[key] 
         ) {
           playNote(key);
-          if(Object.keys(activeOscillators).length != 0){
-
-                gridSize--
-            
-          }
         }
       }
 
@@ -163,6 +158,7 @@ function windowResized() {
         gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
         osc.connect(gainNode).connect(audioCtx.destination);
         osc.start();
+        gridSize = Math.floor(Math.random() * 100);
         activeOscillators[key] = osc;
         activeGainNodes[key] = gainNode;
         let gainFactor = Object.keys(activeGainNodes).length;
@@ -186,4 +182,3 @@ function windowResized() {
     },
     false
   );
-  
