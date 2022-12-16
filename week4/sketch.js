@@ -6,18 +6,54 @@ colors = [
     'rgb(6,214,160)'
 ];
 
+speed = 12;
+
 function setup() {
     createCanvas(windowWidth, windowHeight); // width, height
-    noLoop();
+    //noLoop();
+    frameRate(4);
 
 }
 
 function draw() {
     background(400);
+    let x = width/2;
+    let y = height/2;
+    
+   
+    beginShape();
+    for(let i = 0; i < 900; i++) {
+        noFill()
+        stroke(0)
+        curveVertex(x, y);
 
+        fill('#fae');
+        //noStroke();
+        circle(x,y,5);
+
+        if (random(0, 100) < 50){
+            if (random(100) < 50){
+                x-= speed;
+            }
+            else{
+                x += speed
+            }
+        }
+        else{
+            if (random(100) < 50){
+                y-= speed;
+            }
+            else{
+                y += speed
+            }
+        }
+    }
+    endShape();
+    /*
     for (let i=0; i<12000; i++){
         drawRandomLine();
     }
+    */
 }
 
 function drawRandomLine() {
