@@ -3,7 +3,7 @@
 // programmable keyboard
 
 let video;
-let model;
+let faceModel;
 let face;
 let loaded = false;
 let info = true;
@@ -14,6 +14,7 @@ function setup(){
     video = createCapture(VIDEO);
     video.hide();
     loadFaceModel();
+    //loadHandModel();
 }
 
 function draw() {
@@ -24,20 +25,29 @@ function draw() {
         document.getElementById("loadingContainer").style.display = "block";
     }
 
-    if (video.loadedmetadata && model !== undefined) {
+    if (video.loadedmetadata && faceModel !== undefined) {
         getFace()
     }
 
     if (face !== undefined){
         image(video, 0, 0, width, height);
     }
+    
 }
 
 async function loadFaceModel() {
-    model = await faceLandmarksDetection.load(
+    faceModel = await faceLandmarksDetection.load(
         faceLandmarksDetection.SupportedPackages.mediapipeFacemesh,
         { maxFaces: 1 }
     );
+}
+
+function loadHandModel() {
+    handpose.load().then(function(_model){
+        console.log("model initialized.")
+        statusText = "Model loaded."
+        handposeModel = _model;
+    })
 }
 
 function scalePoint(pt) {
@@ -47,7 +57,7 @@ function scalePoint(pt) {
 }
 
 async function getFace() {
-    const predictions = await model.estimateFaces({
+    const predictions = await faceModel.estimateFaces({
         input: document.querySelector('video')
     });
 
