@@ -29,6 +29,8 @@ function draw() {
     }
 
     if (face !== undefined){
+        translate(width,0);
+        scale(-1.0, 1.0);
         image(video, 0, 0, width, height);
     }
     
@@ -59,12 +61,6 @@ async function getFace() {
         face = predictions[0];
     }
     loaded = true;
-}
-
-function getCoor() {
-    console.log("left cheek: ", face.annotations.leftCheek[0][0]);
-    console.log("right cheek: ", face.annotations.rightCheek[0][0]);
-
 }
 
 function toggleModal() {
@@ -146,6 +142,7 @@ document.addEventListener(
         ) {
             playNote(key);
         }
+        
     }
 
     function keyUp(event) {
@@ -184,7 +181,9 @@ document.addEventListener(
       activeOscillators[key] = osc;
       activeGainNodes[key] = gainNode;
       let gainFactor = Object.keys(activeGainNodes).length;
-   
+
+      osc.detune.value = face.annotations.leftCheek[0][0];
+
       // attack
       // reduce gain on all nodes for polyphony
       Object.keys(activeGainNodes).forEach(function(key) {
