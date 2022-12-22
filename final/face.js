@@ -14,7 +14,6 @@ function setup(){
     video = createCapture(VIDEO);
     video.hide();
     loadFaceModel();
-    //loadHandModel();
 }
 
 function draw() {
@@ -40,14 +39,6 @@ async function loadFaceModel() {
         faceLandmarksDetection.SupportedPackages.mediapipeFacemesh,
         { maxFaces: 1 }
     );
-}
-
-function loadHandModel() {
-    handpose.load().then(function(_model){
-        console.log("model initialized.")
-        statusText = "Model loaded."
-        handposeModel = _model;
-    })
 }
 
 function scalePoint(pt) {
@@ -213,11 +204,3 @@ document.addEventListener(
   },
   false
 );
-
-
-function updatePage() {
-    if (osc !== undefined){
-        osc.frequency.value = (CurX / WIDTH) * maxFreq;
-    }
-  
-}
