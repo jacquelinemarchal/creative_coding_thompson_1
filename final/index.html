@@ -1,5 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
-   <!--  <script src="p5.js"></script> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
 
@@ -8,18 +9,49 @@
     <script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.4.0/dist/tf-backend-webgl.js"></script>
     <script src="https://unpkg.com/@tensorflow-models/face-landmarks-detection@0.0.1/dist/face-landmarks-detection.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
-    
+</head>
+<body>
+    <main style="display: flex; justify-content: center; padding-top: 3rem;">
+        
+        <nav>
+            <ul>
+                <svg onclick="toggleModal()" style="width: 7px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path d="M144 80c0 26.5-21.5 48-48 48s-48-21.5-48-48s21.5-48 48-48s48 21.5 48 48zM0 224c0-17.7 14.3-32 32-32H96c17.7 0 32 14.3 32 32V448h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H64V256H32c-17.7 0-32-14.3-32-32z"/>
+                </svg>
+                <button style="height: 20px; bottom: 0" onclick="getCoor()" id="getCoor">Get Coor</button>
+            </ul> 
+        </nav>
+        
+        <script src="face.js"></script>
+      
+        <div id="loadingContainer">
+            <span class="loader"></span>
+            <p id="spinnerText" style="color: white;">Loading camera...</p>
+        </div>
 
-    <!-- p5.js script -->
-    <script src="face.js"></script>
+        <div id="infoModal" class="modal">
+            <div class="modal-content">
+                <span onclick="toggleModal()" class="close">&times;</span>
+                <p id="modalText">Welcome! 
+                    <br>Here is how to play:
+                    <br>
+                    <li>Use the keyboard to generate pitches</li>
+                    <li>Open your mouth to hear different timbres</li>
+                    <li>Move your head to detune pitches</li>    
+                </p>
+                <footer style="line-height: 65%;">
+                    <small>Credit: Thank you to Jeff Thompson for his open source Creative Programming 1 and 2 courses on Github and Youtube. 
+                        I followed along with his video on integrating p5js with Mediapipe Facemesh to start this project. 
+                        I also adapted the keyboard code from Tim Vallencourt's Assignment for Computational Sound class at Barnard.
+                    </small>
+                </footer>
+            </div>
+        </div>
 
-  </head>
-  <body>
-  </body>
-  <!--
-  <body id="sketchContainer">
-        <script src="sketch.js"></script>
-  </body>
-    -->
+       
+    </main>
+</body>
 </html>
+
+
 

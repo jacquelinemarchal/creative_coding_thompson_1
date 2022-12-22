@@ -1,8 +1,96 @@
-html, body {
-  margin: 0;
-  padding: 0;
+body, html{ 
+    margin: 0;
+    min-height: 100%;
+    background-color: black;
 }
 canvas {
-  display: block;
+    border-radius: 2rem;
+  }
+ul {
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+p, li, small {
+    font-family: Arial, Helvetica, sans-serif;
+}
+small {
+    font-size: 7pt;
+}
+.loader {
+    margin-left: -24px;
+    margin-bottom: -14px;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
+
+#loadingContainer{
+    top: 50%;
+    left: 50%;
+    position: absolute;
 }
 
+#spinnerText{
+    margin-top: 25px;
+    margin-left: -55px;
+}
+
+path{
+    fill: white;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; /* Enable scroll if needed */
+    border-radius: 2rem;
+  }
+  
+.modal-content {
+    background-color: #fefefe;
+    margin: 25% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 2rem;
+    width: 30%;
+}
+  
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalText {
+    color: black;
+    text-align: center;
+}
